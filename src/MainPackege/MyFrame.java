@@ -3,7 +3,7 @@ package MainPackege;
 import javax.swing.*;
 
 public class MyFrame extends JFrame {
-    private static final int WIDTH = 600;
+    private static final int WIDTH = 900;
     private static final int HEIGHT = 800;
 
     MyFrame(){
