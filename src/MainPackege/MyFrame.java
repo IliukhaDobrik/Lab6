@@ -10,7 +10,7 @@ public class MyFrame extends JFrame {
         setSize(WIDTH,HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setMenuBar(new MyMenuBar());
+        setJMenuBar(new MyMenuBar());
 
         setVisible(true);
     }
