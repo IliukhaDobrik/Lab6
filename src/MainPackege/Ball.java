@@ -72,7 +72,7 @@ public class Ball implements Runnable{
                 Thread.sleep(16-speed);
             }
         } catch (InterruptedException ex) {
-            
+
         }
 
     }
