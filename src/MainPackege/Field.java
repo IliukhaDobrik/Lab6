@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Field extends JPanel {
-    private boolean paused;
 
     private ArrayList<Ball> balls = new ArrayList<>(10);
 
@@ -34,19 +33,35 @@ public class Field extends JPanel {
         balls.add(new Ball(this));
     }
 
+    public void deleteBall(){
+        if (!balls.isEmpty())
+            balls.remove(0);
+        else {
+            JOptionPane.showMessageDialog(null,
+                    "Упс, вы уже удалили все шары",
+                    "Error" ,
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public synchronized void pause() {
-        paused = true;
+        for (Ball ball : balls){
+            if (ball.getAngel() == 1)
+                ball.setPaused(true);
+        }
     }
 
     public synchronized void resume() {
-        paused = false;
-        notifyAll();
+        for (Ball ball : balls){
+            if (ball.getPaused())
+                ball.setPaused(false);
+                notifyAll();
+        }
     }
 
     public synchronized void canMove(Ball ball) throws
             InterruptedException {
-        if (paused) {
+        if (ball.getPaused())
             wait();
-        }
     }
 }

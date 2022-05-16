@@ -13,7 +13,11 @@ public class MyMenuBar extends JMenuBar implements ActionListener {
     private JMenuItem pauseMenuItem = new JMenuItem("Приостановить движение");
     private JMenuItem resumeMenuItem = new JMenuItem("Возобновить движение");
 
-    MyMenuBar(){
+    private Field field;
+
+    MyMenuBar(Field field){
+        this.field =  field;
+
         add(ballsMenu);
         add(controlMenu);
 
@@ -22,10 +26,10 @@ public class MyMenuBar extends JMenuBar implements ActionListener {
         controlMenu.add(pauseMenuItem);
         controlMenu.add(resumeMenuItem);
 
-        addMenuItem.addActionListener(this);
-        deleteMenuItem.addActionListener(this);
-        pauseMenuItem.addActionListener(this);
-        resumeMenuItem.addActionListener(this);
+        addMenuItem.addActionListener(e -> field.addBall());
+        deleteMenuItem.addActionListener(e -> field.deleteBall());
+        pauseMenuItem.addActionListener(e -> field.pause());
+        resumeMenuItem.addActionListener(e -> field.resume());
     }
 
     @Override
